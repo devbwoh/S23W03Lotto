@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import kotlin.random.Random
 
 class LottoViewModel : ViewModel( ) {
-    private var _numbers = MutableLiveData <IntArray>(IntArray(6) { 0 })
+    private var _numbers = MutableLiveData<IntArray>(IntArray(6) { 0 })
     val numbers: LiveData<IntArray>
         get() = _numbers
     fun generate() {

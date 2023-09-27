@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kr.ac.kumoh.ce.prof01.s23w03lotto.databinding.ActivityMainBinding
 
@@ -25,9 +26,14 @@ class MainActivity : AppCompatActivity() {
         model = ViewModelProvider(this)[LottoViewModel::class.java]
         setNumbersText()
 
+        model.numbers.observe(this, Observer {
+            Log.i("Observer!!!", "numbers changed")
+            setNumbersText()
+        })
+
         main.btnGenerate.setOnClickListener {
             model.generate()
-            setNumbersText()
+            //setNumbersText()
         }
     }
 
